@@ -6,7 +6,6 @@
 //@access Public 
 
 exports.getBootcamps =(req,res,next)=>{
-    console.log("===getBootcamps===")
     res.status(200).json({success:true,msg:'Show all bootcamps'})
 }
 
@@ -35,6 +34,7 @@ exports.postBootcamp =(req,res,next)=>{
 //@access Private 
 
 exports.updateBootcamp =(req,res,next)=>{
+    console.log("===req.params===",req.params)
     res.status(200).json({success:true,msg:`Update bootcamp ${req.params.id}`})
 }
 

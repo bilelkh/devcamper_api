@@ -11,7 +11,7 @@ router.route("/")
 router.route('/:id')
     .get(getBootcamp)
     .put(updateBootcamp)
-    .get(deleteBootcamp)
+    .delete(deleteBootcamp)
 
 
 
