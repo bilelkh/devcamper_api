@@ -2,8 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
-
-
+const errorHandler = require('./middleware/error');
+const ErrorResponse = require("./utils/errorResponse") ;
 dotenv.config({ path: './config/config.env' });
 const connectDB = require('./config/db')
     //Route files 
@@ -15,7 +15,7 @@ connectDB();
 //Load env vars 
 
 const app = express();
-app.use(express.json()) ; 
+app.use(express.json());
 
 
 const logger = (req, res, next) => {
@@ -29,7 +29,10 @@ const logger = (req, res, next) => {
 //app.use(morgan);
 
 //Mount routers 
-app.use('/api/v1/bootcamps', bootcamps)
+app.use('/api/v1/bootcamps', bootcamps);
+app.use(errorHandler);
+
+
 app.get('/', (req, res) => {
     res.send("Hello from express")
 })
